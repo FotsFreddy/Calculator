@@ -5,6 +5,10 @@
     font-family: 'Agency FB';
 }
 
+body{
+    background-color: #000;
+}
+
 .calculator{
     height: 100dvh;
     font-size: 3em;
