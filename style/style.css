@@ -26,6 +26,7 @@ body{
     align-content: flex-end;
     padding-right: 10px;
     font-family: sans-serif;
+    overflow-x: auto;
 }
 
 .calculator__keyboard{
