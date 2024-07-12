@@ -9,8 +9,8 @@ function resetScreen() {
 
 function toggleBrackets() {
     if(bracketsCounter===0 || isOperator(calcScreen.textContent.slice(-1)) || calcScreen.textContent.slice(-1)==="("){
-            calcScreen.textContent += "(";
-            bracketsCounter++;
+        calcScreen.textContent += "(";
+        bracketsCounter++;
     }
     else if(bracketsCounter>0 && !isOperator(calcScreen.textContent.slice(-1))){
         calcScreen.textContent += ")";
@@ -19,7 +19,38 @@ function toggleBrackets() {
 }
 
 function displayOnScreen(value) {
-        calcScreen.textContent += value;
+    if (calcScreen.textContent.slice(-1)==="") {
+        if (isOperator(value)) {
+            if (value==="-") {
+                calcScreen.textContent += value;
+                return;
+            }
+            else
+            return;
+        }
+    }
+    else{
+        if (isOperator(calcScreen.textContent.slice(-1))) {
+            switch (value) {
+                case "+":
+                    calcScreen.textContent = calcScreen.textContent.slice(0, calcScreen.textContent.length-1) + "+"; 
+                    return;
+                case "-":
+                    if (calcScreen.textContent.slice(-1)==="/" || calcScreen.textContent.slice(-1)==="x") {
+                        calcScreen.textContent += "-";
+                    }
+                    calcScreen.textContent = calcScreen.textContent.slice(0, calcScreen.textContent.length-1) + "-"; 
+                    return;
+                case "x":
+                    calcScreen.textContent = calcScreen.textContent.slice(0, calcScreen.textContent.length-1) + "x"; 
+                    return;
+                case "/":
+                    calcScreen.textContent = calcScreen.textContent.slice(0, calcScreen.textContent.length-1) + "/"; 
+                    return;
+            }
+        }
+    }
+    calcScreen.textContent += value;
 }
 
 function deleteLastChar() {
