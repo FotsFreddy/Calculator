@@ -48,8 +48,8 @@ button{
     border-radius: 50%;
     border: none;
     margin: auto;
-    transition-property: backgorund-color;
-    transition-duration: 1500ms;
+    transition-property: background-color;
+    transition-duration: 150ms;
 }
 
 .digit:active{
@@ -61,7 +61,7 @@ button{
 }
 
 .calculator__keyboard__operators:active{
-    background-color: #757575;
+    background-color: #4e5556;
 }
 
 .calculator__keyboard__reset{
