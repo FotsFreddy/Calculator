@@ -19,37 +19,12 @@ function toggleBrackets() {
 }
 
 function displayOnScreen(value) {
-    if (calcScreen.textContent.slice(-1)==="") {
-        if (isOperator(value)) {
-            if (value==="-") {
+    if (isOperator(value)){
+        if (!isOperator(calcScreen.textContent.slice(-1)) && calcScreen.textContent.slice(-1)!="(" && calcScreen.textContent.slice(-1)!=".") {
                 calcScreen.textContent += value;
-                return;
             }
-            else
-            return;
-        }
     }
-    else{
-        if (isOperator(calcScreen.textContent.slice(-1))) {
-            switch (value) {
-                case "+":
-                    calcScreen.textContent = calcScreen.textContent.slice(0, calcScreen.textContent.length-1) + "+"; 
-                    return;
-                case "-":
-                    if (calcScreen.textContent.slice(-1)==="/" || calcScreen.textContent.slice(-1)==="x") {
-                        calcScreen.textContent += "-";
-                    }
-                    calcScreen.textContent = calcScreen.textContent.slice(0, calcScreen.textContent.length-1) + "-"; 
-                    return;
-                case "x":
-                    calcScreen.textContent = calcScreen.textContent.slice(0, calcScreen.textContent.length-1) + "x"; 
-                    return;
-                case "/":
-                    calcScreen.textContent = calcScreen.textContent.slice(0, calcScreen.textContent.length-1) + "/"; 
-                    return;
-            }
-        }
-    }
+    else
     calcScreen.textContent += value;
 }
 
@@ -67,7 +42,7 @@ function calculate() {
     try{
         var current = calcScreen.textContent;
         if (calcScreen.textContent.includes("x")) {
-            calcScreen.textContent=calcScreen.textContent.replace("x","*");
+            calcScreen.textContent=calcScreen.textContent.replace(/x/g,"*");
         }
         calcScreen.textContent = eval(calcScreen.textContent);
     }catch(error){
